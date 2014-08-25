@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration  xmlns:log4j="http://jakarta.apache.org/log4j/" threshold="debug">
+ 	 <!-- 输出到控制台 -->
+     <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">   
+         <layout class="org.apache.log4j.PatternLayout">
+	         <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) | %m%n"/>
+	     </layout> 
+     </appender>
+     <!-- 输出到文件 -->  
+	 <appender name="cplatform.DailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
+	     <!-- for UNIX -->
+	     <!--param name="File" value="/applog/tshome/tshome/tshome.log"/-->
+	     <!-- for Windows -->
+	     <param name="File" value="E:/run.log"/> 
+	     <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+	     <param name="Encoding" value="gb2312"/>
+	     <layout class="org.apache.log4j.PatternLayout">
+	         <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %c.%M(%L) | %m%n"/>
+	     </layout>          
+	 </appender>
+	 <logger name="com.cplatform" additivity="true">
+	     <level value="info"/>
+	 </logger>
+	 <root>
+	  	 <level value="info"/>
+	     <!--<appender-ref ref="cplatform.DailyRollingFile"/>--><!-- 指定输出到文件 -->
+	     <appender-ref ref="CONSOLE" /> <!-- 指定输出到控制台 -->
+	 </root>
+</log4j:configuration>
